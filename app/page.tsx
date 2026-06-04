@@ -1,65 +1,188 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import Navigation from './components/Navigation';
+import HeroSection from './components/HeroSection';
+import CompaniesSection from './components/CompaniesSection';
+import FeatureShowcase from './components/FeatureShowcase';
+import CoreFeaturesGrid from './components/CoreFeaturesGrid';
+import TrustSection from './components/TrustSection';
+import PricingSection from './components/PricingSection';
+import CTASection from './components/CTASection';
+import Footer from './components/Footer';
 
 export default function Home() {
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      const emails = JSON.parse(localStorage.getItem('earlyAccessEmails') || '[]');
+      if (!emails.includes(email)) {
+        emails.push(email);
+        localStorage.setItem('earlyAccessEmails', JSON.stringify(emails));
+      }
+      console.log('Email stored:', email);
+      setSubmitted(true);
+      setTimeout(() => {
+        setEmail('');
+        setSubmitted(false);
+      }, 3000);
+    }
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="site-shell min-h-screen overflow-hidden text-black">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Navigation onScroll={handleScroll} />
+
+        <HeroSection onScroll={handleScroll} />
+
+        <CompaniesSection />
+
+        <FeatureShowcase
+          title="Client Management That <span class='text-gray-700'>Actually Works</span>"
+          description="Never lose a client message again. Centralize all communications, store notes, and track project history in one unified workspace."
+          features={[
+            'Unified client database with full history',
+            'Automatic message aggregation',
+            'Rate management per client',
+            'AI-powered insights',
+          ]}
+          visual={{
+            src: 'https://images.unsplash.com/photo-1682668898065-b90c97684c39?auto=format&fit=crop&q=80&w=1600',
+            alt: 'Two people reviewing a project dashboard on a laptop',
+            eyebrow: 'Client workspace',
+            title: 'A shared view for every relationship',
+            detail: 'Meetings, notes, files, and decisions stay attached to the client record.',
+            stat: '360',
+            statLabel: 'profile view',
+            tone: 'rose',
+          }}
+          imageLeft={true}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+
+        <FeatureShowcase
+          title="Invoicing That Sells <span class='text-gray-700'>More Effectively</span>"
+          description="Create professional invoices in minutes. Set recurring payments, track who owes what, and get paid faster with automated reminders."
+          features={[
+            'Create invoices in seconds',
+            'Automatic payment reminders',
+            'Multi-currency support',
+            'Recurring invoice templates',
+          ]}
+          visual={{
+            src: 'https://images.unsplash.com/photo-1654263736203-a289f57c0d82?auto=format&fit=crop&q=80&w=1600',
+            alt: 'A payment terminal printing a receipt',
+            eyebrow: 'Payment flow',
+            title: 'Invoices move cleanly from sent to paid',
+            detail: 'Track the handoff from billing to payment without chasing spreadsheets.',
+            stat: '2.4x',
+            statLabel: 'faster follow-up',
+            tone: 'green',
+          }}
+          animation="slideInLeft"
+        />
+
+        <FeatureShowcase
+          title="Proposals That Close <span class='text-gray-700'>Deals Faster</span>"
+          description="Build professional proposals using pre-built templates. Add your branding, request signatures, and track proposal status automatically."
+          features={[
+            'Professional proposal templates',
+            'Custom branding & styling',
+            'Digital signature collection',
+            'Real-time proposal tracking',
+          ]}
+          visual={{
+            src: 'https://images.unsplash.com/photo-1746712241490-869f5352b1fb?auto=format&fit=crop&q=80&w=1600',
+            alt: 'A laptop displaying a proposal document preview',
+            eyebrow: 'Proposal room',
+            title: 'Polished scopes ready for a client yes',
+            detail: 'Package milestones, proof, and signatures in a focused closing flow.',
+            stat: 'Live',
+            statLabel: 'deal status',
+            tone: 'blue',
+          }}
+        />
+
+        <CoreFeaturesGrid />
+
+        <TrustSection />
+
+        <PricingSection />
+
+        <CTASection
+          email={email}
+          setEmail={setEmail}
+          submitted={submitted}
+          handleEmailSubmit={handleEmailSubmit}
+        />
+
+        <Footer />
+      </div>
+
+      <style>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px) rotateX(10deg);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+          }
+        }
+      `}</style>
     </div>
   );
 }
