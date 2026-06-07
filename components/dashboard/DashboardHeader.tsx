@@ -5,10 +5,13 @@ import Link from "next/link";
 
 export function DashboardHeader() {
   return (
-    <header className="sticky top-0 z-30">
-      <div className="mx-auto max-w-[1400px] px-4 pt-4">
-        <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_60px_-35px_rgba(0,0,0,0.9)] px-6 py-4 transition-all duration-300 hover:shadow-[0_30px_90px_-55px_rgba(56,189,248,0.45)]">
+    <header className="w-full flex justify-center pt-4">
+      <div className="w-full max-w-6xl px-4">
+        <div className="rounded-2xl border border-white/10 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.9)] px-6 py-4 transition-all duration-300 hover:shadow-[0_30px_90px_-55px_rgba(56,189,248,0.45)]">
+          
           <div className="flex items-center justify-between">
+            
+            {/* Left side */}
             <div className="flex items-center gap-4">
               <h1 className="text-2xl tracking-tight text-white">
                 Freelancer OS
@@ -18,6 +21,7 @@ export function DashboardHeader() {
               </div>
             </div>
 
+            {/* Right side */}
             <div className="flex items-center gap-3">
               <Link
                 href="/dashboard/clients"
@@ -30,6 +34,7 @@ export function DashboardHeader() {
                 <UserButton />
               </div>
             </div>
+
           </div>
         </div>
       </div>

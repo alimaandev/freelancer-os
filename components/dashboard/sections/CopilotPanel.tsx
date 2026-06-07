@@ -38,7 +38,10 @@ export function CopilotPanel() {
   }, [filteredInvoices, filteredProposals, filteredClients]);
 
   return (
-    <Card className="bg-gradient-to-b from-white/10 to-white/5 border border-white/10 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.55)] overflow-hidden">
+    <Card
+      variant="glassDark"
+      className="bg-gradient-to-b from-white/10 to-white/5 overflow-hidden shadow-[0_20px_60px_-35px_rgba(0,0,0,0.55)]"
+    >
       <CardHeader>
         <div className="flex items-center justify-between gap-3">
           <div>

@@ -117,7 +117,7 @@ export function DashboardSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 shrink-0 border-r border-white/10 bg-white/5 backdrop-blur-xl">
+    <aside className="w-64 shrink-0  ">
       <nav className="p-4">
         <div className="mb-4 px-3">
           <div className="text-xs uppercase tracking-widest text-white/60">
@@ -137,7 +137,7 @@ export function DashboardSidebar() {
                     "group relative flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-all duration-300",
                     "text-white/90",
                     isActive
-                      ? "bg-white/10 shadow-[0_10px_30px_-15px_rgba(0,200,255,0.35)] border border-white/15"
+                      ? "bg-black/70 shadow-[0_25px_80px_-40px_rgba(0,0,0,0.9)] border border-zinc-800/40"
                       : "hover:bg-white/8 hover:text-white border border-transparent"
                   )}
                 >
@@ -147,8 +147,8 @@ export function DashboardSidebar() {
                     className={cn(
                       "pointer-events-none absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300",
                       isActive
-                        ? "opacity-100 bg-gradient-to-r from-sky-400/25 via-fuchsia-400/10 to-indigo-400/20"
-                        : "group-hover:opacity-100 bg-gradient-to-r from-sky-400/20 via-fuchsia-400/0 to-indigo-400/15"
+                        ? "bg-gradient-to-r from-black via-zinc-950 to-black"
+                        : "group-hover:opacity-100 bg-gradient-to-r from-zinc-950/40 via-transparent to-zinc-950/40"
                     )}
                   />
 
@@ -157,7 +157,7 @@ export function DashboardSidebar() {
                       "relative inline-flex h-9 w-9 items-center justify-center rounded-xl",
                       "bg-white/5 border border-white/10",
                       isActive
-                        ? "text-white shadow-[0_10px_35px_-18px_rgba(56,189,248,0.8)]"
+                        ? "text-white shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]"
                         : "text-white/70 group-hover:text-white"
                     )}
                   >

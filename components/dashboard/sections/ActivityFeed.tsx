@@ -66,7 +66,7 @@ export function ActivityFeed() {
   }, [filteredClients, filteredInvoices, filteredProposals, clientById]);
 
   return (
-    <Card className="bg-white/5 border-white/10 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.55)]">
+    <Card variant="glassDark" className="shadow-[0_20px_60px_-35px_rgba(0,0,0,0.55)]">
       <CardHeader>
         <CardTitle className="text-white">Activity</CardTitle>
         <CardDescription className="text-white/55">Realtime-ish feed based on your current filters.</CardDescription>

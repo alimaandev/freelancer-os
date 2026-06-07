@@ -16,7 +16,7 @@ export function ClientsTable() {
   const { state, actions } = useDashboardStore();
 
   return (
-    <Card className="bg-white/5 border-white/10 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.55)]">
+    <Card variant="glassDark" className="shadow-[0_20px_60px_-35px_rgba(0,0,0,0.55)]">
       <CardHeader>
         <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
           <div>

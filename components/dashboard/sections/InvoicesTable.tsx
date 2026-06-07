@@ -3,13 +3,7 @@
 import React, { useMemo, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
 import { StatusPill } from "@/components/dashboard/ui/StatusPill";
-import {
-  moneyFromCents,
-  useDashboardDerived,
-  useDashboardStore,
-} from "@/components/dashboard/store/DashboardStore";
-
-
+import { moneyFromCents, useDashboardDerived, useDashboardStore } from "@/components/dashboard/store/DashboardStore";
 
 function dueLabel(iso: string) {
   const d = new Date(iso + "T00:00:00Z");
@@ -19,7 +13,6 @@ function dueLabel(iso: string) {
 export function InvoicesTable() {
   const { filteredInvoices, clientById } = useDashboardDerived();
   const { state, actions, markInvoicePaid, sendInvoiceReminder } = useDashboardStore();
-
 
   const [busyId, setBusyId] = useState<string | null>(null);
 
@@ -37,10 +30,8 @@ export function InvoicesTable() {
     setBusyId(null);
   }
 
-
-
   return (
-    <Card className="bg-white/5 border-white/10 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.55)]">
+    <Card variant="glassDark" className="shadow-[0_20px_60px_-35px_rgba(0,0,0,0.55)]">
       <CardHeader>
         <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
           <div>

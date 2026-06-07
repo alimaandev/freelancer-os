@@ -15,7 +15,7 @@ function KpiCard({
   sub?: string;
 }) {
   return (
-    <Card className="bg-white/5 border-white/10 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.55)]">
+    <Card variant="glassDark" className="shadow-[0_20px_60px_-35px_rgba(0,0,0,0.55)]">
       <div className="p-4">
         <div className="text-xs text-white/60">{label}</div>
         <div className="mt-2 text-2xl font-semibold text-white">{value}</div>
